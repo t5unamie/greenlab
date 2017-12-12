@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> 
+    <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+    <script>
+    // Defining angularjs application.
+    var postApp = angular.module('postApp', []);
+    // Controller function and passing $http service and $scope var.
+    postApp.controller('postController', function($scope, $http, $window) {
+      // create a blank object to handle form data.
+        $scope.user = {};
+        $scope.token = localStorage.getItem("Token");
+      // calling our submit function.
+        $scope.submitForm = function() {
+        // Posting data to php file
+        $http({
+          method  : 'POST',
+          url     : 'http://localhost:3001/api/authenticate',
+          data    : $scope.user, //forms user object
+          headers : {'Content-Type': 'application/json'} 
+         })
+          .success(function(data) {
+            console.log($window)
+            if (data.errors) {
+              // Showing errors.
+              $scope.errorName = data.errors.name;
+              $scope.errorPassword = data.errors.password;
+            } else {
+              //SAVE localstorage  VAUE example
+              localStorage.setItem("Token", data.token);
+              //SAVE localstorage  VAUE example
+              $scope.token = localStorage.getItem("Token");
+              //SAVE Session VAUE example
+              $window.sessionStorage.setItem("Token", data.token );
+              //SHOW session VAUE example
+              $scope.token2 = $window.sessionStorage.getItem("Token");
+            }
+          });
+        };
+    });
+    postApp.controller('NonSecureController', function ($scope, $http) {
+        $http({
+          method  : 'GET',
+          url     : 'http://localhost:3002/scrape',
+          headers : {'Content-Type': 'application/json'} 
+         })
+          .success(function(data) {
+            if (data.errors) {
+              // Showing errors.
+              $scope.errorName = data.errors.name;
+              $scope.errorPassword = data.errors.password;
+            } else {
+              $scope.MovieTitle = data.title
+              $scope.released = data.release
+              $scope.rating = data.rating
+            }
+          });
+    });
+    postApp.controller('SecureController', function ($scope, $http) {
+        
+        $scope.token = localStorage.getItem("Token");
+        if (typeof $scope.token !== 'undefined') {
+          $http({
+            method  : 'POST',
+            url     : 'http://localhost:3003/names',
+            data : { "token": $scope.token }
+          })
+          .success(function(data) {
+            if (data.errors) {
+              // Showing errors.
+              $scope.errorName = data.errors.name;
+            } else {
+              $scope.firstName = data.firstName
+              $scope.lastName = data.lastName
+            }
+          });
+        }
+    });
+</script>
+</head>
+<body ng-app="postApp" ng-controller="postController">
+<div class="container">
+<div class="col-sm-8 col-sm-offset-2" ng-show="token == null" class="ng-hide">
+    <div class="page-header"><h1>Greenlab login</h1></div>
+    <!-- FORM -->
+    <form name="userForm" ng-submit="submitForm()">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="username" class="form-control" ng-model="user.name">
+        <span ng-show="errorName">{{errorName}}</span>
+    </div>
+    <div class="form-group">
+        <label>Username</label>
+        <input type="text" name="password" class="form-control" ng-model="user.password">
+        <span ng-show="errorPassword">{{errorPassword}}</span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div class="col-sm-8 col-sm-offset-2" ng-show="token != null" class="ng-hide">
+  <p> Thanks for logging in - your token is: {{token}} </p>
+</div>
+<div class="col-sm-8 col-sm-offset-2" ng-controller="NonSecureController">
+  <p> Hi there, welcome to the site </p>
+</div>
+<div class="col-sm-8 col-sm-offset-2" ng-controller="SecureController">
+  <p> Secure Data by {{firstName}} {{lastName}} </p>
+</div>
+
+</div>
+</body>
+</html>

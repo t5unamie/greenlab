@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    table
+      thread
+        tr
+          th Tasks
+          th Urgency
+          th Requester
+          th Delete
+      each esTask in esTasks
+        tr
+          td= esTask._source.task
+          td= esTask._source.urgency
+          td= esTask._source.requester
+          td 
+            input(type='button', value='X').remove-doc.btn.btn-danger.col-xs-12(data-id="#{esTask._id}")
+
+    br
+    form(action='/', method='POST')
+      | Tasks: 
+      input(type='text', name='task')
+      br
+      | Urgency:  
+      input(type='text', name='urgency')
+      br
+      | requester: 
+      input(type='text', name='requester')
+      br
+      input(type='submit', value='Submit')
+
+      script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js", type="text/javascript")
+      script(src="/javascripts/main.js", type="text/javascript")
