@@ -82,7 +82,11 @@
 <body ng-app="postApp" ng-controller="postController">
 <div class="container">
 <div class="col-sm-8 col-sm-offset-2" ng-show="token == null" class="ng-hide">
-    <div class="page-header"><h1>Greenlab login</h1></div>
+    <div class="page-header"><h1>Greenlab</h1></div>
+    <div layout="row">
+      <div flex><a href="/">HOME</a></div>
+      <div flex><a href="/register.html">REGISTER</a></div>
+    </div>
     <!-- FORM -->
     <form name="userForm" ng-submit="submitForm()">
     <div class="form-group">
