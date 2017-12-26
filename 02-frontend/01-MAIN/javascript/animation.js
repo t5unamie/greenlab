@@ -17,10 +17,19 @@ animateApp.config(function($routeProvider) {
 
 });
 
+animateApp.controller('aboutus', function($scope) {
+    $scope.page = 'About Us';
+});
+
+animateApp.controller('home', function($scope) {
+    $scope.page = 'Home';
+});
 
 animateApp.controller('toolbarControler', function ($scope, $http) {
     $scope.token = localStorage.getItem("Token");
 });
+
+
 // Controller function and passing $http service and $scope var.
 animateApp.controller('postController', function($scope, $http, $window) {
   // create a blank object to handle form data.
@@ -50,6 +59,7 @@ animateApp.controller('postController', function($scope, $http, $window) {
           $window.sessionStorage.setItem("Token", data.token );
           //SHOW session VAUE example
           $scope.token2 = $window.sessionStorage.getItem("Token");
+         window.location.href = "/";
         }
       });
     };
