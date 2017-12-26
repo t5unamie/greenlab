@@ -25,6 +25,10 @@ To start app run
 
 npm start
 
+To create user for login testing hit this URL.
+
+localhost:3001/setup
+
 JWT auth model examples used.
 
 https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens

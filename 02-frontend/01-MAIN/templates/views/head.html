@@ -1,1 +1,6 @@
-head.html
+<div ng-controller="toolbarControler">
+	<a href="#" class="btn btn-success btn-lg"> Home</a>
+	<a href="#signin" class="btn btn-danger btn-lg ng-hide" ng-show="token == null">signin</a>
+	<a href="#register" class="btn btn-danger btn-lg ng-hide" ng-show="token == null">register</a>
+	<a href="#aboutus" class="btn btn-success btn-lg">About</a>
+</div>

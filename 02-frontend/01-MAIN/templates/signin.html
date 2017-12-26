@@ -1,8 +1,7 @@
 <!-- FORM -->
+<div ng-controller="postController">    
     <h1>signin</h1>
-    <a href="#" class="btn btn-danger btn-lg">home</a>
-    <a href="#aboutus" class="btn btn-success btn-lg">About</a>
-    <a href="#register" class="btn btn-danger btn-lg">register</a>
+    <ng-include src="'/templates/views/head.html'"></ng-include>x
 
     <form name="userForm" ng-submit="submitForm()">
     <div class="form-group">
@@ -17,3 +16,4 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+</div>
