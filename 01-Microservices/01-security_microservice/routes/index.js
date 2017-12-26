@@ -18,8 +18,8 @@ router.get('/setup', function(req, res) {
 
   // create a sample user
   var nick = new User({ 
-    name: 'Nick Cerminara', 
-    password: 'password',
+    name: 'johnp', 
+    password: 'johnp',
     admin: true,
     role: [
         "03-secure_microservice", 

@@ -11,12 +11,11 @@ animateApp.config(function($routeProvider) {
     	.when('/register', {
     		templateUrl: 'templates/register.html'
     	})
-        .when('/aboutus', {
-            templateUrl: 'templates/aboutus.html'
-        });
+      .when('/aboutus', {
+        templateUrl: 'templates/aboutus.html'
+      });
 
 });
-
 
 /*    // Defining angularjs application.
     var postApp = angular.module('postApp', []);
