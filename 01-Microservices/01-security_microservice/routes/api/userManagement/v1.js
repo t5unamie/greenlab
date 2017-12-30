@@ -28,6 +28,18 @@ router.post('/register', function(req, res) {
         res.json({ success: false, message: 'Authentication failed. Wrong password.', errors: { password : "Authentication failed. Wrong password"} });
       } else {
 
+          var newUser = new User({ 
+            email: user.email,
+            name: user.name, 
+            password: user.password,
+            firstn : user.lastn,
+            firstn : user.firstn,
+            admin: false,
+            role: [
+                "02-iot-data"
+              ]
+          });
+
         // return the information including token as JSON
         res.json({
           success: true,
@@ -41,6 +53,32 @@ router.post('/register', function(req, res) {
 });
 
 // Delete user
+
+router.post('/delete_user', function(req, res) {
+  // find the user
+  User.findOne({
+    name: req.body.name
+  }, function(err, user) {
+    if (err) throw err;
+    if (!user) {
+      res.json({ success: false, message: 'Authentication failed. User not found.', errors: { name : "Authentication failed. User not found."} });
+    } else if (user) {
+      // check if password matches
+      if (user.password != req.body.password) {
+        res.json({ success: false, message: 'Authentication failed. Wrong password.', errors: { password : "Authentication failed. Wrong password"} });
+      } else {
+
+        // return the information including token as JSON
+        res.json({
+          success: true,
+          message: 'user created',
+        });
+      }   
+
+    }
+
+  });
+});
 
 // Edit user
 
