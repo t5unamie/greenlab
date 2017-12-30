@@ -1,19 +1,21 @@
 <!-- FORM -->
-<div ng-controller="postController">    
-    <h1>signin</h1>
-    <ng-include src="'/templates/views/head.html'"></ng-include>x
+<div ng-controller="signin"> 
+    <div ng-controller="postController">    
+        <h1>{{page}}</h1>
+        <ng-include src="'/templates/views/toolbar.html'"></ng-include>
 
-    <form name="userForm" ng-submit="submitForm()">
-    <div class="form-group">
-        <label>Name</label>
-        <input type="text" name="username" class="form-control" ng-model="user.name">
-        <span ng-show="errorName">{{errorName}}</span>
+        <form name="userForm" ng-submit="submitForm()">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control" ng-model="user.name">
+            <span ng-show="errorName">{{errorName}}</span>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="text" name="password" class="form-control" ng-model="user.password">
+            <span ng-show="errorPassword">{{errorPassword}}</span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
-    <div class="form-group">
-        <label>Username</label>
-        <input type="text" name="password" class="form-control" ng-model="user.password">
-        <span ng-show="errorPassword">{{errorPassword}}</span>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
 </div>
