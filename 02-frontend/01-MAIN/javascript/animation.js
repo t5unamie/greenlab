@@ -28,7 +28,7 @@ animateApp.controller('postController', function($scope, $http, $window) {
     // Posting data to php file
     $http({
       method  : 'POST',
-      url     : 'http://localhost:3001/api/authenticate',
+      url     : 'http://localhost:3001/api/auth/v1/authenticate',
       data    : $scope.user, //forms user object
       headers : {'Content-Type': 'application/json'} 
      })
@@ -51,26 +51,6 @@ animateApp.controller('postController', function($scope, $http, $window) {
         }
       });
     };
-});
-animateApp.controller('SecureController', function ($scope, $http) {
-    
-    $scope.token = localStorage.getItem("Token");
-    if (typeof $scope.token !== 'undefined') {
-      $http({
-        method  : 'POST',
-        url     : 'http://localhost:3003/names',
-        data : { "token": $scope.token }
-      })
-      .success(function(data) {
-        if (data.errors) {
-          // Showing errors.
-          $scope.errorName = data.errors.name;
-        } else {
-          $scope.firstName = data.firstName
-          $scope.lastName = data.lastName
-        }
-      });
-    }
 });
 
 //logout funtion

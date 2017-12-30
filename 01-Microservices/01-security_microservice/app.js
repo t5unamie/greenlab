@@ -9,7 +9,8 @@ var mongoose    = require('mongoose');
 
 
 var index = require('./routes/index');
-var apiRoutes = require('./routes/apiRoutes');
+var authv1 = require('./routes/api/auth/v1');
+var usermanv1 = require('./routes/api/userManagement/v1');
 
 // Configuration
 var config = require('./config'); // get our config file
@@ -32,7 +33,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/api', apiRoutes);
+app.use('/api/auth/v1', authv1);
+app.use('/api/userManagement/v1', usermanv1);
 
 var config = require('./config'); // get our config file
 

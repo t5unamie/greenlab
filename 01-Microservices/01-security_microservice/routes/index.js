@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
 router.get('/setup', function(req, res) {
 
   // create a sample user
-  var nick = new User({ 
+  var newUser = new User({ 
     name: 'johnp', 
     password: 'johnp',
     admin: true,
@@ -28,7 +28,7 @@ router.get('/setup', function(req, res) {
   });
 
   // save the sample user
-  nick.save(function(err) {
+  newUser.save(function(err) {
     if (err) throw err;
 
     console.log('User saved successfully');
