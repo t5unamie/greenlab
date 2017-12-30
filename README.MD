@@ -14,7 +14,7 @@
 
 The below image shows the basic setup.
 
-![Greenhouse Lab](https://github.com/t5unamie/greenlab/tree/master/Z-Assets/images/greenlab_network diagram.jpg "Greenhouse Lab")
+![Greenhouse Lab](https://github.com/t5unamie/greenlab/blob/master/Z-Assets/images/greenlab_network%20diagram.jpg "Greenhouse Lab")
 
 1. Greenhouse Labs
 	The Greenhouse is in my garden. Several sensors attached to arduino's (Marked as IOT devices) are connected to a raspberry pi. On the raspberry pi, which runs linux, fluentd is installed and setup to parse the sensors data to Google Pubsub service.
