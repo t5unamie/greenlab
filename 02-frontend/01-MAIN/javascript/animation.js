@@ -17,6 +17,7 @@ animateApp.config(function($routeProvider) {
 
 });
 
+// This sets up login authentications.
 // Controller function and passing $http service and $scope var.
 animateApp.controller('postController', function($scope, $http, $window) {
   // create a blank object to handle form data.
@@ -71,6 +72,12 @@ animateApp.controller('SecureController', function ($scope, $http) {
       });
     }
 });
+
+//logout funtion
+
+function doLogout() {
+  localStorage.removeItem('Token');
+}
 
 // Setup variables for use by pages for defasult site.
 animateApp.controller('aboutus', function($scope) {
