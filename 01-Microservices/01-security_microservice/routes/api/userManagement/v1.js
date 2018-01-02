@@ -80,6 +80,15 @@ router.post('/delete_user', function(req, res) {
   });
 });
 
+//username lookup
+// route to return all users (GET http://localhost:3001/api/userManagement/v1/users)
+// Remined protect this path with rat limiting
+router.post('/users', function(req, res) {
+  User.find({}, function(err, users) {
+    res.json(users);
+  });
+});
+
 // Edit user
 
 router.use(function(req, res, next) {
@@ -115,13 +124,6 @@ router.use(function(req, res, next) {
 
 router.get('/', function(req, res) {
   res.json({ message: 'Welcome to the coolest API on earth!' });
-});
-
-// route to return all users (GET http://localhost:8080/api/users)
-router.get('/users', function(req, res) {
-  User.find({}, function(err, users) {
-    res.json(users);
-  });
 });
 
 
