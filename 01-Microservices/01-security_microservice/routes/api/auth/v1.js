@@ -14,7 +14,7 @@ mongoose.createConnection(config.database); // connect to database
 var superSecret = config.secret; // secret variable
 
 
-// Get authentication token http://localhost:8080/api/auth/v1/authenticate)
+// Get authentication token http://localhost:3001/api/auth/v1/authenticate)
 router.post('/authenticate', function(req, res) {
   // find the user
   User.findOne({

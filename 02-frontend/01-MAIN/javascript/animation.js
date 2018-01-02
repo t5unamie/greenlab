@@ -43,10 +43,6 @@ animateApp.controller('postController', function($scope, $http, $window) {
           localStorage.setItem("Token", data.token);
           //SAVE localstorage  VAUE example
           $scope.token = localStorage.getItem("Token");
-          //SAVE Session VAUE example
-          $window.sessionStorage.setItem("Token", data.token );
-          //SHOW session VAUE example
-          $scope.token2 = $window.sessionStorage.getItem("Token");
          window.location.href = "/";
         }
       });
@@ -57,6 +53,7 @@ animateApp.controller('postController', function($scope, $http, $window) {
 
 function doLogout() {
   localStorage.removeItem('Token');
+  window.location.href = "/";
 }
 
 // Setup variables for use by pages for defasult site.
@@ -68,8 +65,28 @@ animateApp.controller('home', function($scope) {
     $scope.page = 'Home';
 });
 
-animateApp.controller('register', function($scope) {
+animateApp.controller('register', function($scope, $http, $window) {
     $scope.page = 'Register';
+    // calling our submit function.
+    $scope.submitForm = function() {
+    // Posting data to php file
+    $http({
+      method  : 'POST',
+      url     : 'http://localhost:3001/api/userManagement/v1/register',
+      data    : $scope.user, //forms user object
+      headers : {'Content-Type': 'application/json'} 
+     })
+      .success(function(data) {
+        console.log($window)
+        if (data.errors) {
+          // Showing errors.
+          $scope.errorName = data.errors.name;
+          $scope.errorPassword = data.errors.password;
+        } else {
+         window.location.href = "/";
+        }
+      });
+    };
 });
 
 animateApp.controller('signin', function($scope) {

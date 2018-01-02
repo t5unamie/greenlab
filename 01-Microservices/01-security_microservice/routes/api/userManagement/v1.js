@@ -14,38 +14,38 @@ mongoose.createConnection(config.database); // connect to database
 var superSecret = config.secret; // secret variable
 
 // Create user
+// Get authentication token http://localhost:3001/api/userManagement/v1/register)
 router.post('/register', function(req, res) {
   // find the user
   User.findOne({
     name: req.body.name
   }, function(err, user) {
     if (err) throw err;
-    if (!user) {
-      res.json({ success: false, message: 'Authentication failed. User not found.', errors: { name : "Authentication failed. User not found."} });
-    } else if (user) {
-      // check if password matches
-      if (user.password != req.body.password) {
-        res.json({ success: false, message: 'Authentication failed. Wrong password.', errors: { password : "Authentication failed. Wrong password"} });
-      } else {
+    if (user) {
+      res.json({ success: false, message: 'user exists', errors: { name : "User already exists"} });
+    } else  {
 
           var newUser = new User({ 
-            email: user.email,
-            name: user.name, 
-            password: user.password,
-            firstn : user.lastn,
-            firstn : user.firstn,
+            email: req.body.email,
+            name: req.body.name, 
+            password: req.body.password,
+            firstn : req.body.lastn,
+            firstn : req.body.firstn,
             admin: false,
             role: [
                 "02-iot-data"
               ]
           });
 
+            newUser.save(function(err) {
+              if (err) throw err;
+            });
+
         // return the information including token as JSON
         res.json({
           success: true,
           message: 'user created',
-        });
-      }   
+        });  
 
     }
 
