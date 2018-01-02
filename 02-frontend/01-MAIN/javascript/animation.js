@@ -1,3 +1,21 @@
+
+
+
+  var a = function() {
+    console.log('A')
+  }
+
+  function b() {
+    console.log('B')
+  }
+
+
+var g = a;
+g()
+
+
+
+
 var animateApp = angular.module('animateApp', ['ngRoute', 'ngAnimate']);
 
 animateApp.config(function($routeProvider) {
@@ -20,6 +38,7 @@ animateApp.config(function($routeProvider) {
 // This sets up login authentications.
 // Controller function and passing $http service and $scope var.
 animateApp.controller('postController', function($scope, $http, $window) {
+
   // create a blank object to handle form data.
     $scope.user = {};
     $scope.token = localStorage.getItem("Token");
@@ -65,7 +84,25 @@ animateApp.controller('home', function($scope) {
     $scope.page = 'Home';
 });
 
+var checkEmail;
 animateApp.controller('register', function($scope, $http, $window) {
+
+    function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email.toLowerCase());
+    }
+
+    checkEmail = function() {
+      var emailVal = ($('#email').val());
+
+      if (!validateEmail(emailVal)) {
+        $scope.errorEmail = "Email address is not valid";
+      } else { 
+          $scope.errorEmail = ""
+      }
+      
+    }
+
     $scope.page = 'Register';
     // calling our submit function.
     $scope.submitForm = function() {
@@ -82,6 +119,7 @@ animateApp.controller('register', function($scope, $http, $window) {
           // Showing errors.
           $scope.errorName = data.errors.name;
           $scope.errorPassword = data.errors.password;
+          $scope.errorEmail = data.errors.email;
         } else {
          window.location.href = "/";
         }
