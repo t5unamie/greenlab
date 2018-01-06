@@ -2,17 +2,16 @@ var express = require('express');
 var router = express.Router();
 var jwt    = require('jsonwebtoken');
 var cors = require('cors')
-
 router.use(cors())
 
-/* DB setup */
-var mongoose    = require('mongoose');
-// Configuration
+var md5   = require('../../../modules/md5'); // password encption
+//jwt info
 var config = require('../../../config'); // get our config file
-var User   = require('../../../models/user'); // get our mongoose model
-var md5   = require('../../../models/md5'); // get our mongoose model
-mongoose.createConnection(config.database); // connect to database
 var superSecret = config.secret; // secret variable
+
+//DB setup.
+var mongoose = require('../../../modules/mongoose');
+var User   = require('../../../models/user'); // get our mongoose model
 
 
 // Get authentication token http://localhost:3001/api/auth/v1/authenticate)
@@ -26,7 +25,7 @@ router.post('/authenticate', function(req, res) {
       res.json({ success: false, message: 'Authentication failed. User not found.', errors: { name : "Authentication failed. User not found."} });
     } else if (user) {
       // check if password matches
-      if (user.password != md5(req.body.password)) {
+      if (user.password != md5(req.body.password, user.salt)) {
         res.json({ success: false, message: 'Authentication failed. Wrong password.', errors: { password : "Authentication failed. Wrong password"} });
       } else {
 

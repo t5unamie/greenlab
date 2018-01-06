@@ -6,14 +6,14 @@ var randomstring = require("randomstring");
 
 router.use(cors())
 
-/* DB setup */
-var mongoose    = require('mongoose');
-// Configuration
+var md5   = require('../../../modules/md5'); // password encption
+//jwt info
 var config = require('../../../config'); // get our config file
-var User   = require('../../../models/user'); // get our mongoose model
-var md5   = require('../../../models/md5'); // password encption
-mongoose.createConnection(config.database); // connect to database
 var superSecret = config.secret; // secret variable
+
+//DB setup.
+var mongoose = require('../../../modules/mongoose');
+var User   = require('../../../models/user'); // get our mongoose model
 
 // Create user
 // Get authentication token http://localhost:3001/api/userManagement/v1/register)
