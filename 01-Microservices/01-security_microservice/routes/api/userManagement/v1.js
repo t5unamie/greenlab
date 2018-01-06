@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt    = require('jsonwebtoken');
 var cors = require('cors')
+var md5 = require('js-md5');
 
 router.use(cors())
 
@@ -25,10 +26,12 @@ router.post('/register', function(req, res) {
       res.json({ success: false, message: 'user exists', errors: { name : "User already exists"} });
     } else  {
 
+        var encrptedP = md5(req.body.password)
+
           var newUser = new User({ 
             email: req.body.email,
             name: req.body.name, 
-            password: req.body.password,
+            password: encrptedP,
             firstn : req.body.lastn,
             firstn : req.body.firstn,
             admin: false,
@@ -83,11 +86,20 @@ router.post('/delete_user', function(req, res) {
 //username lookup
 // route to return all users (GET http://localhost:3001/api/userManagement/v1/users)
 // Remined protect this path with rat limiting
-router.post('/users', function(req, res) {
-  User.find({}, function(err, users) {
-    res.json(users);
+/*router.post('/existCheck', function(req, res) {
+    User.findOne({
+    name: req.body.name,
+  }, function(err, user) {
+    if (err) throw err;
+    if (user) {
+      res.json({ success: false, message: 'user exists', errors: { name : "User already exists"} });
+    } else {
+
+    }
+    if (email) {
+
   });
-});
+});*/
 
 // Edit user
 

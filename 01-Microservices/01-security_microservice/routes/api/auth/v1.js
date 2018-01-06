@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt    = require('jsonwebtoken');
 var cors = require('cors')
+var md5 = require('js-md5');
 
 router.use(cors())
 
@@ -25,13 +26,16 @@ router.post('/authenticate', function(req, res) {
       res.json({ success: false, message: 'Authentication failed. User not found.', errors: { name : "Authentication failed. User not found."} });
     } else if (user) {
       // check if password matches
-      if (user.password != req.body.password) {
+      if (user.password != md5(req.body.password)) {
         res.json({ success: false, message: 'Authentication failed. Wrong password.', errors: { password : "Authentication failed. Wrong password"} });
       } else {
 
         // if user is found and password is right
         // create a token
-        var token = jwt.sign({data: user}, superSecret, {
+        var token = jwt.sign({
+          'id': user._id,
+          'role': user.role
+        }, superSecret, {
           expiresIn : 60*60*24 // expires in 24 hours
         });
 
