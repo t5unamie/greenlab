@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt    = require('jsonwebtoken');
 var cors = require('cors')
-var md5 = require('js-md5');
+var randomstring = require("randomstring");
 
 router.use(cors())
 
@@ -11,6 +11,7 @@ var mongoose    = require('mongoose');
 // Configuration
 var config = require('../../../config'); // get our config file
 var User   = require('../../../models/user'); // get our mongoose model
+var md5   = require('../../../models/md5'); // password encption
 mongoose.createConnection(config.database); // connect to database
 var superSecret = config.secret; // secret variable
 
@@ -26,12 +27,14 @@ router.post('/register', function(req, res) {
       res.json({ success: false, message: 'user exists', errors: { name : "User already exists"} });
     } else  {
 
-        var encrptedP = md5(req.body.password)
+        var saltvalue = randomstring.generate();
+        var encrptedP = md5(req.body.password, saltvalue);
 
           var newUser = new User({ 
             email: req.body.email,
             name: req.body.name, 
             password: encrptedP,
+            salt   : saltvalue,
             firstn : req.body.lastn,
             firstn : req.body.firstn,
             admin: false,

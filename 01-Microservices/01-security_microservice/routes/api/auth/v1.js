@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var jwt    = require('jsonwebtoken');
 var cors = require('cors')
-var md5 = require('js-md5');
 
 router.use(cors())
 
@@ -11,6 +10,7 @@ var mongoose    = require('mongoose');
 // Configuration
 var config = require('../../../config'); // get our config file
 var User   = require('../../../models/user'); // get our mongoose model
+var md5   = require('../../../models/md5'); // get our mongoose model
 mongoose.createConnection(config.database); // connect to database
 var superSecret = config.secret; // secret variable
 
