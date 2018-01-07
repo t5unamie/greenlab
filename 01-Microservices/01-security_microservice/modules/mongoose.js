@@ -5,5 +5,5 @@ var config = require('../config'); // get our config file
 
 module.exports = function () 
 	{
-		mongoose.connect(config.database); // connect to database
+		mongoose.connect(config.database, { useMongoClient: true }); // connect to database
 	};
