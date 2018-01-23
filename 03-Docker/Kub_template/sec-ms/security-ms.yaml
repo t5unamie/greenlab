@@ -12,7 +12,6 @@ spec:
     targetPort: 3001
   selector:
     app: security-ms
-  type: LoadBalancer
 ---
 apiVersion: v1
 kind: ReplicationController
@@ -29,7 +28,7 @@ spec:
       - name: security-ms
         image: node
         workingDir: /opt/node-app
-        command: ["docker-entrypoints.sh"]
+        command: ["/opt/node-app/docker-entrypoints.sh"]
         env:
         - name: URL
           value: "security-db-mongodb.default.svc.cluster.local"
@@ -44,4 +43,4 @@ spec:
         - name: node-app
           gitRepo:
             repository: "https://github.com/t5unamie/greenlab.git"
-            revision: "2426786f1a68df66041186f3dcd01d7af117eca6"
+            revision: "715d6cbbff80519194a70bb7ec1e712f645d3f30"

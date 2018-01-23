@@ -1,2 +1,6 @@
 .DS_Store
 update.sh
+green-labs_io.key
+green-labs_io.csr
+green-labs_io.crt
+tmp-green-labs_io.crt
