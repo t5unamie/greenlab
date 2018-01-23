@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginxconfigmap
+data:
+  default.conf: |-
+    limit_req_zone $binary_remote_addr zone=mylimit:10m rate=60r/m;
+    server {
+            listen 80 default_server;
+            listen [::]:80 default_server ipv6only=on;
+
+            listen 443 ssl;
+
+            server_name localhost;
+            ssl_certificate /etc/nginx/ssl/tls.crt;
+            ssl_certificate_key /etc/nginx/ssl/tls.key;
+
+            location / {
+                    limit_req zone=mylimit;
+                    proxy_pass  http://securitysvc.default.svc.cluster.local:3001;
+            }
+    }   
