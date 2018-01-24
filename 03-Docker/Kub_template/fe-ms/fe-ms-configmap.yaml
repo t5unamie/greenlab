@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fenginxconf
+data:
+  default.conf: |-
+    server {
+            listen 80 default_server;
+            listen [::]:80 default_server ipv6only=on;
+
+            listen 443 ssl;
+
+            server_name _;
+            ssl_certificate /etc/nginx/ssl/tls.crt;
+            ssl_certificate_key /etc/nginx/ssl/tls.key;
+
+            index index.html;
+            root /usr/share/nginx/html/;
+
+            location /static/ {
+                if (-f $request_filename) {
+                    break;
+                }
+                if (-d $request_filename) {
+                    break;
+                }
+            }
+
+            location / {
+                try_files $uri $uri/ /index.html?$uri&$args;
+                if (-f $request_filename) {
+                    break;
+                }
+                if (-d $request_filename) {
+                    break;
+                }
+                rewrite ^(.+)$ /index.html?$1 last;
+            }
+    }   
