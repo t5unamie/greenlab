@@ -5,7 +5,7 @@ helm init
 helm install --name security-db stable/mongodb
 
 Create user in mongodb
-user admin;
+use admin;
 
 db.createUser({ user: 'jphan', pwd: 'someyoungguy', roles: [ "userAdminAnyDatabase", "dbAdminAnyDatabase", "readWriteAnyDatabase" ] });
 
@@ -29,7 +29,6 @@ kubectl create secret tls nginxsecret --key green-labs_io.key  --cert green-labs
 upload config
 
 kubectl create -f sec-ms-proxy-configmap.yaml
-kubectl create -f sec-ms-tmp-config.yaml
 
 Create container first
 

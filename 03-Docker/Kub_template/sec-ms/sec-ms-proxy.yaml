@@ -39,7 +39,6 @@ spec:
       containers:
       - name: nginxhttps
         image: tsunamie/http-nginx:latest
-        imagePullPollicy: Always
         command: ["/home/auto-reload-nginx.sh"]
         ports:
         - containerPort: 443
