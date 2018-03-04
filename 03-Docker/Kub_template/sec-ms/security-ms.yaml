@@ -31,7 +31,7 @@ spec:
         command: ["/opt/node-app/docker-entrypoints.sh"]
         env:
         - name: URL
-          value: "security-db-mongodb-mongodb.default.svc.cluster.local"
+          value: "security-db-mongodb.default.svc.cluster.local"
         ports:
         - containerPort: 3001
           name: http
