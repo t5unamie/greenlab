@@ -16,7 +16,7 @@ spec:
         command: ["/opt/node-app/docker-entrypoints.sh"]
         env:
         - name: URL
-          value: "security-db-mongodb.default.svc.cluster.local"
+          value: "yodeling-aardwolf-mongodb"
         ports:
         - containerPort: 3001
           name: http
