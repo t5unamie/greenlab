@@ -1,3 +1,13 @@
+Setup DB
+
+helm init
+
+helm install stable/mongodb
+
+Create user in mongodb
+
+db.createUser({ user: 'jphan', pwd: 'someyoungguy', roles: [ "readWriteAnyDatabase", "dbAdminAnyDatabase", "userAdminAnyDatabase" ] });
+
 Create SSL certs using the following commands.
 
 openssl req \
@@ -18,6 +28,7 @@ kubectl create secret tls nginxsecret --key green-labs_io.key  --cert green-labs
 upload config
 
 kubectl create -f sec-ms-proxy-configmap.yaml
+kubectl create -f sec-ms-tmp-config.yaml
 
 Create container first
 
