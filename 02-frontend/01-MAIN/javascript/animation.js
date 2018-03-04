@@ -1,20 +1,5 @@
-
-
-
-  var a = function() {
-    console.log('A')
-  }
-
-  function b() {
-    console.log('B')
-  }
-
-
-var g = a;
-g()
-
-
-
+var baseURL = "https://sec-ms.green-labs.io"
+// var baseURL = "localhost:3000"
 
 var animateApp = angular.module('animateApp', ['ngRoute', 'ngAnimate']);
 
@@ -47,7 +32,7 @@ animateApp.controller('postController', function($scope, $http, $window) {
     // Posting data to php file
     $http({
       method  : 'POST',
-      url     : 'http://localhost:3001/api/auth/v1/authenticate',
+      url     : baseURL + '/api/auth/v1/authenticate',
       data    : $scope.user, //forms user object
       headers : {'Content-Type': 'application/json'} 
      })
@@ -109,7 +94,7 @@ animateApp.controller('register', function($scope, $http, $window) {
     // Posting data to php file
     $http({
       method  : 'POST',
-      url     : 'http://localhost:3001/api/userManagement/v1/register',
+      url     : baseURL + '/api/userManagement/v1/register',
       data    : $scope.user, //forms user object
       headers : {'Content-Type': 'application/json'} 
      })

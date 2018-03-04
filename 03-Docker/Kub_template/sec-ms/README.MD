@@ -2,11 +2,12 @@ Setup DB
 
 helm init
 
-helm install --name security-db-mongodb stable/mongodb
+helm install --name security-db stable/mongodb
 
 Create user in mongodb
+user admin;
 
-db.createUser({ user: 'jphan', pwd: 'someyoungguy', roles: [ "readWrite", "dbAdmin" ] });
+db.createUser({ user: 'jphan', pwd: 'someyoungguy', roles: [ "userAdminAnyDatabase", "dbAdminAnyDatabase", "readWriteAnyDatabase" ] });
 
 Create SSL certs using the following commands.
 
