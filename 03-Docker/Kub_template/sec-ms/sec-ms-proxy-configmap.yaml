@@ -16,6 +16,15 @@ data:
             ssl_certificate_key /etc/nginx/ssl/tls.key;
 
             location / {
+                    add_header Access-Control-Allow-Origin "*" always;
+                    add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS" always;
+                    add_header Access-Control-Allow-Headers "Origin, Authorization" always;
+
+                    # Handling the Preflight
+                    if ($request_method = OPTIONS ) {
+                        return 200;
+                    }
+
                     limit_req zone=mylimit;
                     proxy_pass  http://securitysvc:3001;
             }

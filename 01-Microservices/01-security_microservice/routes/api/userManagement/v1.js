@@ -1,11 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var jwt    = require('jsonwebtoken');
-var cors = require('cors')
 var randomstring = require("randomstring");
-
-router.options('*', cors()) // include before other routes
-router.use(cors())
 
 var md5   = require('../../../modules/md5'); // password encption
 //jwt info
