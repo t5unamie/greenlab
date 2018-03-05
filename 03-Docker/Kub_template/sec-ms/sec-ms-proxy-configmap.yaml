@@ -17,6 +17,6 @@ data:
 
             location / {
                     limit_req zone=mylimit;
-                    proxy_pass  http://securitysvc.default.svc.cluster.local:3001;
+                    proxy_pass  http://securitysvc:3001;
             }
-    }   
+     }
