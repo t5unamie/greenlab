@@ -50,6 +50,9 @@ spec:
         - mountPath: /usr/share/nginx/html/
           name: fe
           subPath: "greenlab/02-frontend/01-MAIN"
+        - mountPath: /usr/share/nginx/images/
+          name: fe
+          subPath: "greenlab/Z-Assets/images"
         - mountPath: /etc/nginx/ssl
           name: ssl-volume
         - mountPath: /etc/nginx/conf.d
