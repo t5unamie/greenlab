@@ -7,10 +7,12 @@ data:
     server {
             listen 80 default_server;
             listen [::]:80 default_server ipv6only=on;
-
-            listen 443 ssl;
-
             server_name _;
+            return 301 https://$host$request_uri;
+
+            }
+    server {
+            listen 443 ssl;
             ssl_certificate /etc/nginx/ssl/tls.crt;
             ssl_certificate_key /etc/nginx/ssl/tls.key;
 
