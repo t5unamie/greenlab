@@ -43,4 +43,4 @@ spec:
         - name: node-app
           gitRepo:
             repository: "https://github.com/t5unamie/greenlab.git"
-            revision: "02ffd9a45638a37164115a93f978a4d6e47707c6"
+            revision: "2fe63d4f1b9f913a936d5fda6c3e86c345934098"
