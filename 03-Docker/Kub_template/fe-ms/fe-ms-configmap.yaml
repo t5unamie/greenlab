@@ -20,6 +20,17 @@ data:
             root /usr/share/nginx/html/;
 
             location /static/ {
+                root /usr/share/nginx/images/;
+                if (-f $request_filename) {
+                    break;
+                }
+                if (-d $request_filename) {
+                    break;
+                }
+            }
+
+            location /images/ {
+                root /usr/share/nginx/;
                 if (-f $request_filename) {
                     break;
                 }

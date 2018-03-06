@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose    = require('mongoose');
 
-
 var index = require('./routes/index');
 var authv1 = require('./routes/api/auth/v1');
 var usermanv1 = require('./routes/api/userManagement/v1');
