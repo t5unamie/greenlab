@@ -38,7 +38,7 @@ spec:
       - name: fe
         gitRepo:
           repository: "https://github.com/t5unamie/greenlab.git"
-          revision: "54f2a4a3f1417341a73ddcf1a6696829a2d49f29"
+          revision: "94971bce702157164344436de904aada2c70540c"
       containers:
       - name: nginxhttps
         image: tsunamie/http-nginx:latest
