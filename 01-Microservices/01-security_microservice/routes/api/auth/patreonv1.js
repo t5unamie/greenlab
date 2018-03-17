@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var url = require('url')
-var patreon = require('patreon')
-var patreonAPI = patreon.default
+var url = require('url');
+var patreon = require('patreon');
+var patreonAPI = patreon
 var patreonOAuth = patreon.oauth
 
  
@@ -31,6 +31,8 @@ function handleOAuthRedirectRequest(request, response) {
     patreonOAuthClient
         .getTokens(oauthGrantCode, redirectURL)
         .then(function(tokensResponse) {
+            console.log(patreonAPI);
+            console.log(tokensResponse);
             var patreonAPIClient = patreonAPI(tokensResponse.access_token)
             return patreonAPIClient('/current_user')
         })
