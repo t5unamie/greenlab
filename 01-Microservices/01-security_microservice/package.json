@@ -19,6 +19,7 @@
     "passport-patreon": "^1.0.1",
     "patreon": "^0.4.0",
     "randomstring": "^1.1.5",
-    "serve-favicon": "^2.4.5"
+    "serve-favicon": "^2.4.5",
+    "url": "^0.11.0"
   }
 }
