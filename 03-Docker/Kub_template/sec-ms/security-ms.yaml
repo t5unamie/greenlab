@@ -18,7 +18,7 @@ kind: ReplicationController
 metadata:
   name: security-ms
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -32,6 +32,10 @@ spec:
         env:
         - name: URL
           value: "security-db-mongodb.default.svc.cluster.local"
+        - name: XXX_CLIENT_ID_XXX
+          value: "xU8HVcRrj0jqgddrmsAsRfoGuVWnOQDCIKcKXr9shdw04f4XEd4whzWJybdQfWG_"
+        - name: XXX_CLIENT_SECRET_XXX
+          value: "oERrOzvMPokcgFZcEkGUbFLOEuxfctiqaSfXPqMSxhB3QLEa9v58JFfvYnvFWFPT"
         ports:
         - containerPort: 3001
           name: http
@@ -43,4 +47,4 @@ spec:
         - name: node-app
           gitRepo:
             repository: "https://github.com/t5unamie/greenlab.git"
-            revision: "2fe63d4f1b9f913a936d5fda6c3e86c345934098"
+            revision: "cc10a57aabe8fd5d962ba8a64ffb7cfdec6426f1"

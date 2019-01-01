@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var url = require('url');
 var patreon = require('patreon');
-var patreonAPI = patreon
+var patreonAPI = patreon.default
 var patreonOAuth = patreon.oauth
 
  

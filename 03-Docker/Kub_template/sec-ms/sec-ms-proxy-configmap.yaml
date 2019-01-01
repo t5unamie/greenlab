@@ -24,7 +24,7 @@ data:
                     if ($request_method = OPTIONS ) {
                         return 200;
                     }
-
+                    
                     limit_req zone=mylimit;
                     proxy_pass  http://securitysvc:3001;
             }
