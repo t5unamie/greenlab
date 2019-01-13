@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var url = require('url');
 var GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
-
+var passport = require('passport');
 
  
 // Use the client id and secret you received when setting up your OAuth account
