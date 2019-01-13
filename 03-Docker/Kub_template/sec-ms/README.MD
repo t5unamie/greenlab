@@ -40,3 +40,8 @@ Create proxies after.
 
 kubectl create -f sec-ms-proxy.yaml
 
+
+\cleanup when done
+
+helm delete security-db
+
