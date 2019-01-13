@@ -1,5 +1,7 @@
 Setup DB
 
+kubectl -n kube-system get po
+
 helm init
 
 helm install --name security-db stable/mongodb

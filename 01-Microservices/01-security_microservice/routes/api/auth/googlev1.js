@@ -6,8 +6,8 @@ var GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 
  
 // Use the client id and secret you received when setting up your OAuth account
-var GOOGLE_CLIENT_ID = 'XXX_CLIENT_ID_XXX'
-var GOOGLE_CLIENT_SECRET = 'XXX_CLIENT_SECRET_XXX'
+var GOOGLE_CLIENT_ID = 'XXX_GOOGLE_CLIENT_ID_XXX'
+var GOOGLE_CLIENT_SECRET = 'XXX_GOOGLE_CLIENT_SECRET_XXX'
 
 passport.use(new GoogleStrategy({
     clientID:     GOOGLE_CLIENT_ID,
