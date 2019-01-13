@@ -1,5 +1,21 @@
 #!/bin/sh
 
+if [ -z "$XXX_GOOGLE_CLIENT_ID_XXX" ]
+then
+      echo "XXX_GOOGLE_CLIENT_ID_XXX not set, this will fail"
+else
+      # Setup config
+            sed -i "s/XXX_GOOGLE_CLIENT_ID_XXX/${XXX_GOOGLE_CLIENT_ID_XXX}/g" routes/api/auth/googlev1.js
+fi
+
+if [ -z "$XXX_GOOGLE_CLIENT_SECRET_XXX" ]
+then
+      echo "XXX_GOOGLE_CLIENT_SECRET_XXX not set, this will fail"
+else
+      # Setup config
+            sed -i "s/XXX_GOOGLE_CLIENT_SECRET_XXX/${XXX_GOOGLE_CLIENT_SECRET_XXX}/g" routes/api/auth/googlev1.js
+fi
+
 if [ -z "$XXX_CLIENT_ID_XXX" ]
 then
       echo "XXX_CLIENT_ID_XXX not set, this will fail"
