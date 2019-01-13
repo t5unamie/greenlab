@@ -27,7 +27,7 @@ router.get('/google', passport.authenticate('google', { scope:
       , 'https://www.googleapis.com/auth/plus.profile.emails.read' ] }
 ));
 
-router.get('/googleAuth', , 
+router.get('/googleAuth', 
     passport.authenticate( 'google', { 
         successRedirect: '/auth/google/success',
         failureRedirect: '/auth/google/failure'
