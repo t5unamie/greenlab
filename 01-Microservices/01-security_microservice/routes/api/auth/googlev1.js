@@ -29,8 +29,8 @@ router.get('/google', passport.authenticate('google', { scope:
 
 router.get('/googleAuth', 
     passport.authenticate( 'google', { 
-        successRedirect: '/auth/google/success',
-        failureRedirect: '/auth/google/failure'
+        successRedirect: '/google/success',
+        failureRedirect: '/google/failure'
 }));
 
 module.exports = router;

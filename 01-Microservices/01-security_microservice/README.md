@@ -37,4 +37,8 @@ Prerequisites
 
 Setup user account - http://developer.zoopla.com/member/register/
 
+\References
+
+https://github.com/barberboy/passport-google-oauth2-example/blob/master/app.js
+
 
