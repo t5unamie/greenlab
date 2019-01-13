@@ -40,5 +40,6 @@ Setup user account - http://developer.zoopla.com/member/register/
 \References
 
 https://github.com/barberboy/passport-google-oauth2-example/blob/master/app.js
+https://stackoverflow.com/questions/30145592/node-js-passport-google-oauth2-delivers-failed-to-fetch-user-profile-error-i
 
 
