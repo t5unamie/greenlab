@@ -9,6 +9,7 @@ var mongoose    = require('mongoose');
 var index = require('./routes/index');
 var authv1 = require('./routes/api/auth/v1');
 var patreonv1 = require('./routes/api/auth/patreonv1');
+var googlev1 = require('./routes/api/auth/googlev1');
 var usermanv1 = require('./routes/api/userManagement/v1');
 
 // Configuration
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/api/auth/v1', authv1);
 app.use('/api/auth/patreonv1', patreonv1);
+app.use('/api/auth/googlev1', googlev1);
 app.use('/api/userManagement/v1', usermanv1);
 
 var config = require('./config'); // get our config file
