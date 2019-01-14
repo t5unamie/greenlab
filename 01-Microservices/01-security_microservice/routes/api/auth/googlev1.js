@@ -3,6 +3,15 @@ var router = express.Router();
 var url = require('url');
 var GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 var passport = require('passport');
+var jwt    = require('jsonwebtoken');
+var md5   = require('../../../modules/md5'); // password encption
+//jwt info
+var config = require('../../../config'); // get our config file
+var superSecret = config.secret; // secret variable
+
+//DB setup.
+var mongoose = require('../../../modules/mongoose');
+var User   = require('../../../models/user'); // get our mongoose model
 
  
 // Use the client id and secret you received when setting up your OAuth account
@@ -16,15 +25,17 @@ passport.use(new GoogleStrategy({
     passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+   /** User.findOrCreate({ googleId: profile.id }, function (err, user) {
       return done(err, user);
-    });
+    });  **/
+    res.send(request)
   }
 ));
 
 router.get('/google', passport.authenticate('google', { scope: 
       [ 'https://www.googleapis.com/auth/plus.login',
-      , 'https://www.googleapis.com/auth/plus.profile.emails.read' ] }
+      'https://www.googleapis.com/auth/userinfo.email',
+      'https://www.googleapis.com/auth/userinfo.profile' ] }
 ));
 
 router.get('/googleAuth', 
