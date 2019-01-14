@@ -29,7 +29,7 @@ passport.use(new GoogleStrategy({
       return done(err, user);
     });  **/
     console.log(profile["email"])
-    return done(null, {} );
+    return done(null, profile );
   }
 ));
 
@@ -41,7 +41,7 @@ router.get('/google', passport.authenticate('google', { scope:
 
 router.get('/googleAuth', 
     passport.authenticate( 'google', { 
-        successRedirect: '/api/auth/googlev1/google/success',
+        successRedirect: '/',
         failureRedirect: '/api/auth/googlev1/google/failure'
 }));
 
