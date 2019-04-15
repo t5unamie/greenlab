@@ -36,6 +36,10 @@ spec:
           value: "xU8HVcRrj0jqgddrmsAsRfoGuVWnOQDCIKcKXr9shdw04f4XEd4whzWJybdQfWG_"
         - name: XXX_CLIENT_SECRET_XXX
           value: "oERrOzvMPokcgFZcEkGUbFLOEuxfctiqaSfXPqMSxhB3QLEa9v58JFfvYnvFWFPT"
+        - name: XXX_GOOGLE_CLIENT_ID_XXX
+          value: "926803999137-avg3cftbg74dcul27qmn8r3h2t42egfg.apps.googleusercontent.com"
+        - name: XXX_GOOGLE_CLIENT_SECRET_XXX
+          value: "mazhbZlmzq0cXaMKkqNg-2z8"
         ports:
         - containerPort: 3001
           name: http
@@ -47,4 +51,5 @@ spec:
         - name: node-app
           gitRepo:
             repository: "https://github.com/t5unamie/greenlab.git"
-            revision: "cc10a57aabe8fd5d962ba8a64ffb7cfdec6426f1"
+            revision: "778b8a1282d05ba27507b913374c6c0ab1135668"
+            
