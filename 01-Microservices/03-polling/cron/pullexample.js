@@ -68,9 +68,25 @@ cron.schedule("* * * * *", function() {
 		console.log(resp.Items);
 
 		for (s in resp.Items) {
-
+			var result = resp.Items[s]['attrs'];
 			console.log('This is item ---------', s)
-			console.log(resp.Items[s])
+
+			// console.log(result['url']);
+			// console.log(result['url_fails']);
+
+			request(result['url'], function (error, response, body) {
+
+     		if (response.statusCode === 200) {
+     	//		fastQueue.remove(index);
+     		} else {
+     			// logic to track how m any times failed
+     		}
+
+	  	 	console.error('error:', error); // Print the error if one occurred
+	  	 	console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+	  	 	console.log('body:', body); // Print the HTML for the Google homepage.
+			});
+
 		} 
 
 	    if(resp.ConsumedCapacity) {
@@ -80,24 +96,9 @@ cron.schedule("* * * * *", function() {
 	  }
 	});
 
-	// console.log(s);
- //    fastQueue.get('*', function (err, acc) {
- //  		console.log(acc);
-	// });
-  //   for (url in fastQueue) {
+
      	
-  //    	request(url, function (error, response, body) {
-
-  //    		if (response.statusCode === 200) {
-  //    	//		fastQueue.remove(index);
-  //    		} else {
-  //    			// logic to track how m any times failed
-  //    		}
-
-	 //  	 	console.error('error:', error); // Print the error if one occurred
-	 //  	 	console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-	 //  	 	console.log('body:', body); // Print the HTML for the Google homepage.
-		// });
-  //   }
+     	
+    
 });
 
