@@ -4,7 +4,7 @@
   "description": "testing",
   "main": "index.js",
   "scripts": {
-    "start": "serverless offline start -r eu-central-1 --noTimeout --port 3000 --host 0.0.0.0",
+    "start": "serverless offline start -r eu-west-1 --noTimeout --port 3000 --host 0.0.0.0",
     "deploy": "serverless deploy"
   },
   "keywords": [],

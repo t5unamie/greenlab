@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+    lambda-app:
+        build:
+            context: ./graphql/
+            dockerfile: Dockerfile
+        expose:
+            - 3000
+        ports:
+            - 3000:3000
+        restart: on-failure
+        volumes:
+            - ./graphql/:/app
+        environment:
+          - DB_URL=http://<replace-me>:8000
+
+
