@@ -1,7 +1,7 @@
 export default {
     Query: {
         projects: async (source, args, { dataSources }, state) => {
-            return dataSources.projectSource.getForproject(source.url);
+            return dataSources.projectSource.get("*");
         },
         project: async (source, args, { dataSources }, state) => {
             // by using "args" argument we can get access
@@ -32,11 +32,11 @@ export default {
             return result;
         },
         deleteProject: async (source, args, { dataSources }, state) => {
-            const { title } = args;
+            const { url } = args;
 
             let result = {};
             try {
-                await dataSources.projectSource.delete(title);
+                await dataSources.projectSource.delete(url);
             } catch(e) {
                 console.log(e);
                 result.error = 'Internal error';
