@@ -8,7 +8,7 @@ export default {
             // to query arguments
             const { url } = args;
 
-            const result = dataSources.projectSource.get([url]);
+            const result = dataSources.projectSource.get(url);
             if (result && result[0]) {
                 return result[0];
             }

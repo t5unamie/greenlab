@@ -9,7 +9,11 @@ const server = new ApolloServer({
     // passing types and resolvers to the server
     typeDefs,
     resolvers,
-
+    playground: {
+        settings: {
+            'editor.theme': 'light',
+        },
+    },
     // initial context state, will be available in resolvers
     context: () => ({}),
 
