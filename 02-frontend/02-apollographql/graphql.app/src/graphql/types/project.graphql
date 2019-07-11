@@ -1,0 +1,27 @@
+type Project {
+    title: String!
+    rank: Int
+    url: String!
+    points: Int
+    username: String!
+    comments: Int
+}
+
+input ProjectInput {
+    title: String!
+    rank: Int
+    url: String!
+    points: Int
+    username: String!
+    comments: Int
+}
+
+type Query {
+  projects: [Project]
+  project(url: String!): Project!
+}
+
+type Mutation {
+    putProject(data: ProjectInput!): Result
+    deleteProject(url: String!): Result
+}

@@ -1,5 +1,6 @@
-
 import AWS from 'aws-sdk';
+
+import tables from './tables';
 
 export default class Database {
     async connect() {
@@ -20,6 +21,11 @@ export default class Database {
             }
 
             this._connection = new AWS.DynamoDB(params);
+
+            if (__DEV__) {
+                // will create tables through lambda only in development
+                await this.createTables(tables);
+            }
         }
 
         return this._connection;

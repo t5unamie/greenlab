@@ -1,5 +1,5 @@
 {
-  "name": "poc_serverless-local-webpack-docker",
+  "name": "lamda_example_dynamo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awesome1888/poc_serverless-local-webpack-docker.git"
+    "url": "git+https://github.com/t5unamie/greenlab.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/awesome1888/poc_serverless-local-webpack-docker/issues"
+    "url": "https://github.com/t5unamie/greenlab.git"
   },
-  "homepage": "https://github.com/awesome1888/poc_serverless-local-webpack-docker#readme"
+  "homepage": "https://github.com/t5unamie/greenlab.git"
 }

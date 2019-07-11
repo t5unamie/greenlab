@@ -1,7 +1,7 @@
 import { ApolloServer } from 'apollo-server-lambda';
 import resolvers from './graphql/resolvers';
 import typeDefs from './graphql/types';
-import projectSource from './graphql/dataSources/project';
+import ProjectSource from './graphql/dataSources/project';
 
 // creating the server
 const server = new ApolloServer({
@@ -17,7 +17,7 @@ const server = new ApolloServer({
     // when executing resolvers
     dataSources: () => {
         return {
-            projectSource: new projectSource(),
+            projectSource: new ProjectSource(),
         };
     },
 });
