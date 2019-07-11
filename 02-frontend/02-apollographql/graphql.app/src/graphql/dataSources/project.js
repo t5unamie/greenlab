@@ -66,44 +66,5 @@ export default class ProjectSource {
         return this._db;
     }
 
-    async getForproject(url) {
-    const db = await this.getDatabase();
-    const result = await db.scan({
-        TableName: 'datascrapeds',
-        ExpressionAttributeValues: {
-            ':url': {
-                S: url,
-            },
-        },
-        FilterExpression: 'contains(project, :url)',
-    });
-
-    if (result && result.Items) {
-        // need to "decode" the items, i know this is annoying
-        return result.Items.map((item) => {
-
-            const p = item.parameters ? item.parameters.M : {};
-            const parameters = [];
-            Object.keys(p).forEach((k) => {
-                parameters.push({
-                    name: k,
-                    value: p[k].S,
-                });
-            });
-
-            return {
-                url: item.url.S,
-                rank: item.rank.N,
-                title: item.title.S,
-                points: item.points.N,
-                username: item.username.S,
-                comments: item.comments.N
-            };
-        });
-    }
-
-    return [];
-}
-
 
 }
