@@ -13,7 +13,7 @@
     "debug": "~2.2.0",
     "elasticsearch": "^12.0.1",
     "express": "~4.14.0",
-    "http-proxy": "^1.16.2",
+    "http-proxy": "^1.18.1",
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
     "nodemon": "^1.11.0",
